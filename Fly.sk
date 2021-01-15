@@ -1,0 +1,53 @@
+# Made by Jake_Jacob SpigotMC: https://www.spigotmc.org/members/jake_jacob.1018658/
+
+command /fly:
+	trigger:
+		if player has permission "skript.fly.time.minute":
+			make player fly
+			set {%player%.fly} to 1
+			send "&f[&bAdvancedFly&f]: You can now fly for 1 minute!"
+			wait 1 minute
+			send "&f[&bAdvancedFly&f]: Fly ending in 5..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 4..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 3..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 2..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 1..."
+			wait 1 second
+			make player stop flying
+			set {%player%.fly} to 0
+		if player has permission "skript.fly.time.hour":
+			make player fly
+			set {%player%.fly} to 1
+			send "&f[&bAdvancedFly&f]: You can now fly for 1 hour!"
+			wait 1 hour
+			send "&f[&bAdvancedFly&f]: Fly ending in 5..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 4..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 3..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 2..."
+			wait 1 second
+			send "&f[&bAdvancedFly&f]: Fly ending in 1..."
+			wait 1 second
+			make player stop flying
+			set {%player%.fly} to 0
+		if player has permission "skript.fly.time.inf":
+			if {%player%.fly} is not set:
+				make player fly
+				set {%player%.fly} to 1
+			if {%player%.fly} is 0:
+				make player fly
+				set {%player%.fly} to 1
+			if {%player%.fly} is 1:
+				make player stop flying
+				set {%player%.fly} to 0
+
+on quit:
+	if {%player%.fly} is 1:
+		make player stop flying
+		set {%player%.fly} to 0
